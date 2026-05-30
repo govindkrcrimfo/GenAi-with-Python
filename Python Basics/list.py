@@ -31,3 +31,13 @@ print(a)
 a.reverse()
 print(a)
 
+
+# 0 to 10 number in list
+a2 = [i for  i in range(10)]
+print(a2)
+
+
+# square of 0 to 10
+a3 =[i*i for i in range(10)]
+print(a3)
+
