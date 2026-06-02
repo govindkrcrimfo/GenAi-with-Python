@@ -16,3 +16,15 @@ products = [
 @app.get("/allProduct")
 def getAllProducts():
     return products
+
+@app.get("/getPrdouct/{id}")
+def getProductById(id:int):
+    for i in products:
+        if(i.id==id):
+            return i
+    return "Product not found with id ",id
+
+@app.post("/addProduct")
+def addProduct(product:Product):
+    products.append(product)
+    return products
