@@ -1,0 +1,12 @@
+# macOS
+.DS_Store
+
+# VS Code
+.vscode/
+tempCodeRunnerFile.py
+
+# Python
+venv/
+.venv/
+__pycache__/
+*.pyc
