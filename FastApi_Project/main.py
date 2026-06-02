@@ -28,3 +28,19 @@ def getProductById(id:int):
 def addProduct(product:Product):
     products.append(product)
     return products
+
+@app.put("/updateProduct")
+def updateProduct(id:int , product:Product):
+    for i in range(len(products)):
+        if products[i].id==id:
+            products[i]=product
+            return "Product udated for id = ",id
+    return "Product not found  for id = ",id
+
+@app.delete("/deleteProduct")
+def deleteProduct(id:int):
+    for i in range(len(products)):
+        if(products[i].id==id):
+            del products[i]
+            return "Product deleted for id = ",id
+    return "Prouduct not found for id = ",id
