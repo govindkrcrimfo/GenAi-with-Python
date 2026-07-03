@@ -28,6 +28,17 @@ def search(query: str, n_results: int = 2):
         query_embeddings=[query_embedding],
         n_results=n_results
     )
+    # Get the distance of the best matching document.
+    best_distance = results["distances"][0][0]
+
+    # Maximum allowed distance to consider a document as relevant.
+    SIMILARITY_THRESHOLD = 1
+
+    # Return a fallback message if no relevant document is found.
+    if best_distance > SIMILARITY_THRESHOLD:
+        return [
+        "I don't have enough information about this topic."
+        ]
     return results["documents"][0]
 
 def add_document(text: str):
