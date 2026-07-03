@@ -10,13 +10,13 @@ A structured learning repository covering Python, FastAPI, OpenAI APIs, LangChai
 * **Uvicorn** – ASGI server used to run FastAPI applications (similar to **Tomcat** for Spring Boot).
 * **FastAPI** – Modern Python framework for building REST APIs (similar to **Spring Boot**).
 * **AI & LLM Fundamentals** - AI vs ML vs Deep Learning vs GenAI, NLP Basics, Tokens, Context Window, Transformers, Attention Mechanism, LLM Fundamentals, Training vs Inference.
-
 * **OpenAI APIs** – Integrate LLMs into applications (similar to consuming external REST APIs in Spring Boot).
 * **Prompt Engineering** – Designing effective prompts to get better responses from LLMs.
 * **Embeddings & Vector DB** – Store and search semantic meaning of data for AI applications.
+* **RAG (Retrieval-Augmented Generation)** – Learn the fundamentals of RAG, why it is needed, Basic RAG architecture, RAG pipeline, document chunking, embeddings, vector search, semantic search, retrieval strategies, and build a complete RAG application **from scratch without using frameworks like LangChain or LangGraph**.
 * **LangChain** – Framework for building LLM-powered applications (similar to how Spring Boot simplifies enterprise development).
 * **LangGraph** – Framework for creating agentic and workflow-based AI systems (advanced orchestration on top of LangChain).
-* **RAG** – Combines LLMs with external knowledge sources to provide accurate, context-aware answers.
+* **Advanced RAG with LangChain & LangGraph** – Build production-ready RAG applications using LangChain and LangGraph, including advanced retrieval techniques, conversational RAG, history-aware retrieval, hybrid search, reranking, and end-to-end AI projects.
 * **Projects** – AI Chatbots, RAG Applications, and Agentic AI Systems.
 
 ## 🎯 Goal
