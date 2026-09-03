@@ -12,3 +12,4 @@ mul = lambda x,y : x*y
 result=mul(4,5)
 print(result)
       
+      
