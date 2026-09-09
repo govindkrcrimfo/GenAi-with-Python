@@ -35,7 +35,7 @@ print(s.getId())
 print(s.getName())
 
 #class method call
-print(Student.getSchool())
+print("Class method Called ", Student.getSchool())
 
 #static method call
 Student.info()
