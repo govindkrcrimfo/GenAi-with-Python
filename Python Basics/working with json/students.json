@@ -1,0 +1,19 @@
+{
+  "students": [
+    {
+      "name": "Govind",
+      "age": 20,
+      "rollno": 101
+    },
+    {
+      "name": "Amit",
+      "age": 21,
+      "rollno": 102
+    },
+    {
+      "name": "Priya",
+      "age": 20,
+      "rollno": 103
+    }
+  ]
+}
