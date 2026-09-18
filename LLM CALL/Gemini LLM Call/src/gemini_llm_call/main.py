@@ -1,6 +1,6 @@
+import os
 from google import genai
 from dotenv import load_dotenv
-import time
 
 #  Load environment variables (retrieves GEMINI_API_KEY from your .env file)
 load_dotenv()
