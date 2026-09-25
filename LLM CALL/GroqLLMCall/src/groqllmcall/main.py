@@ -7,14 +7,29 @@ client = Groq(
     api_key=os.environ.get("GROQ_API_KEY"),
 )
 
-chat_completion = client.chat.completions.create(
+# call for first response 
+first_response = client.chat.completions.create(
     messages=[
         {
             "role": "user",
-            "content": "who is virat kohli ? give in max 4-5 lines ",
+            "content": "which player scored most century in ODI for India in cricket , just give name of that player  ",
         }
     ],
     model="openai/gpt-oss-20b",
 )
+playerName=first_response.choices[0].message.content
+print(playerName)
+print()
+print("***************************************")
 
-print(chat_completion.choices[0].message.content)
+second_response = client.chat.completions.create(
+    messages=[
+        {
+            "role":"user",
+            "content": f"tell me about this player in 4 line in bulllet point {playerName}"
+        }
+    ],
+    model="openai/gpt-oss-20b",
+)
+print(second_response.choices[0].message.content)
+
