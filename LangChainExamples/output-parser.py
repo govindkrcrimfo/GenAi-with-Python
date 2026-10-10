@@ -26,7 +26,7 @@ jsonParser=JsonOutputParser()
 prompt=ChatPromptTemplate.from_messages(
     [
         (
-            "system" , "Reply with json only , using language , use , version"
+            "system" , "Reply with json only , using keys  language , use , version "
         ),
         (
             "human" , "tell me about {topic} "
@@ -34,7 +34,7 @@ prompt=ChatPromptTemplate.from_messages(
     ]
 )
 filled_prompt=prompt.invoke({
-    "topic":"java"
+    "topic":"SpringBoot"
 })
 response1=model.invoke(filled_prompt)
 
