@@ -30,7 +30,7 @@ prompt=ChatPromptTemplate.from_messages(
 # parsedResponse=jsonParser.invoke(response1)
 
 # ****** above three invoke can be chained 
-#chaining 
+#chaining
 chain=prompt | model | jsonParser 
 response=chain.invoke({
     "topic":"Spring Boot"
