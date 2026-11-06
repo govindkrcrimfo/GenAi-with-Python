@@ -9,10 +9,11 @@ model=ChatGroq(
     model="openai/gpt-oss-20b"
 )
 
+@tool
 def multiply(a:int , b:int )-> int :
     """ Multply two two number and give the exact result """
     return a*b
-
+@tool
 def add(a:int , b:int )-> int :
     """ Add two number and return the result"""
     return a+b
