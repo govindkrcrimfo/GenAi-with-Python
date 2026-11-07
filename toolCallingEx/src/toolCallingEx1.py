@@ -10,7 +10,7 @@ model=ChatGroq(
 )
 @tool
 def multiply(a:int , b:int )-> int :
-    """ Multply two two number and give the exact result """
+    """ Multply  two number and give the exact result """
     return a*b
 
 @tool
