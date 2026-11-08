@@ -49,7 +49,7 @@ tools={
 
 for tool_call in reply.tool_calls:
 
-        print("\nTool called:", tool_call["name"])
+        print(" Tool called:", tool_call["name"])
         print("Arguments:", tool_call["args"])
 
         selected_tool = tools[tool_call["name"]]
@@ -62,20 +62,6 @@ for tool_call in reply.tool_calls:
 print("No tools called!")
 print(reply.content)
 
-
-
-# if reply.tool_calls:
-#     tool_called=reply.tool_calls[0]
-#     print("Tool called ", tool_called["name"])
-
-#     print("agrs : ",tool_called["args"])
-
-#     selected_tool=tools[tool_called["name"]]
-#     result=selected_tool.invoke(tool_called["args"])
-#     print("Total words in given sentence is = ",result)
-# else:
-#     print("Tool not called !!")
-#     print(reply.content)
 
 
 
