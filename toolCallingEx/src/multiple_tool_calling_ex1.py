@@ -31,7 +31,7 @@ model_with_tools=model.bind_tools([
 ])
 
 reply=model_with_tools.invoke(
-    "add 2 and 3 and also multiply 5 and 10 "
+    "add 2 and 3 and also Count how many words in the given sentenct :" " Virat is legend of world crickt "
 )
 
 # Print the tool name and arguments selected by the LLM
