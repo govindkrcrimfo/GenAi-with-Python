@@ -40,8 +40,11 @@ def multiply(a: int, b: int) -> int:
 # Put our tools into a list
 tools = [current_time, multiply]
 
-# Map tool names to actual Python tool objects
-tools_by_name = {t.name: t for t in tools}
+
+# Map tool names to actual Python tool objects( tool mapper , kept in dictionary)
+tools_by_name = {}
+for t in tools:
+    tools_by_name[t.name] = t
 
 
 model = ChatGroq(
