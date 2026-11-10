@@ -45,8 +45,6 @@ tools={
     "countWords":countWords
 }
 
-
-
 for tool_call in reply.tool_calls:
 
         print(" Tool called:", tool_call["name"])

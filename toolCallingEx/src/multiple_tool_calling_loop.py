@@ -46,12 +46,10 @@ tools_by_name = {}
 for t in tools:
     tools_by_name[t.name] = t
 
-
 model = ChatGroq(
     model="openai/gpt-oss-120b",
     temperature=0
 ).bind_tools(tools)
-
 
 # Create the conversation
 messages = [
