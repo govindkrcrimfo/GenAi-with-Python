@@ -8,10 +8,6 @@ from langchain.agents import create_agent
 
 load_dotenv()
 
-model=ChatGroq(
-    model="qwen/qwen3.8-27b"
-)
-
 @tool
 def add (a:int , b:int )-> int:
     """Add two number and return the result """
@@ -24,7 +20,9 @@ def multiply(a:int , b:int)->int:
 
 #creating the agent with required info
 agent=create_agent(
-    model=model,
+    model=ChatGroq(
+    model="qwen/qwen3.8-27b"
+),
     tools=[
         add,
         multiply
