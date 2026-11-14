@@ -9,8 +9,6 @@ from langchain_core.messages import HumanMessage, SystemMessage
 
 load_dotenv()
 
-
-
 @tool
 def current_time(city: str) -> str:
     """Get the current time in a city."""
