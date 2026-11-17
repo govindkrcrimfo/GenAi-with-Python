@@ -1,0 +1,76 @@
+
+name: GenAI Python CI Pipeline
+
+on:
+  push:
+    branches:
+      - '**'
+
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  python-build:
+    name: Build All GenAI Python Projects
+    runs-on: ubuntu-latest
+
+    steps:
+      # Get repository source code
+      - name: Checkout repository
+        uses: actions/checkout@v7
+
+      # Install Python
+      - name: Setup Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.14'
+
+      # Install uv
+      - name: Install uv
+        uses: astral-sh/setup-uv@v6
+
+      # Find and install every independent uv project
+      - name: Install all project dependencies
+        shell: bash
+        run: |
+          found=0
+
+          while IFS= read -r -d '' file; do
+            found=1
+            project_dir="$(dirname "$file")"
+
+            echo "Installing dependencies: $project_dir"
+
+            (
+              cd "$project_dir"
+
+              if [ -f uv.lock ]; then
+                uv sync --locked --no-install-project
+              else
+                uv sync --no-install-project
+              fi
+            )
+
+          done < <(
+            find GenAi -name pyproject.toml \
+              -not -path '*/.venv/*' \
+              -print0
+          )
+
+          if [ "$found" -eq 0 ]; then
+            echo "No Python projects found!"
+            exit 1
+          fi
+
+      # Check all Python files recursively
+      - name: Validate Python syntax
+        run: |
+          find GenAi -type f -name "*.py" \
+            -not -path "*/.venv/*" \
+            -not -path "*/__pycache__/*" \
+            -print0 | xargs -0 -r python -m py_compile
+
+      # Final status
+      - name: Build completed
+        run: echo "All GenAI Python projects passed validation!"
