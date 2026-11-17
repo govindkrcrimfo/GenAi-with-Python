@@ -12,25 +12,25 @@ on:
 
 jobs:
   python-build:
-    name: Build All GenAI Python Projects
+    name: Install and Validate Python Projects
     runs-on: ubuntu-latest
 
     steps:
-      # Get repository source code
+      # 1. Checkout repository
       - name: Checkout repository
-        uses: actions/checkout@v7
+        uses: actions/checkout@v4
 
-      # Install Python
+      # 2. Setup Python
       - name: Setup Python
-        uses: actions/setup-python@v6
+        uses: actions/setup-python@v5
         with:
           python-version: '3.14'
 
-      # Install uv
+      # 3. Install uv
       - name: Install uv
         uses: astral-sh/setup-uv@v6
 
-      # Find and install every independent uv project
+      # 4. Find and install dependencies of every uv project
       - name: Install all project dependencies
         shell: bash
         run: |
@@ -40,7 +40,7 @@ jobs:
             found=1
             project_dir="$(dirname "$file")"
 
-            echo "Installing dependencies: $project_dir"
+            echo "Installing dependencies in: $project_dir"
 
             (
               cd "$project_dir"
@@ -53,24 +53,26 @@ jobs:
             )
 
           done < <(
-            find GenAi -name pyproject.toml \
-              -not -path '*/.venv/*' \
-              -print0
+            find . -type f -name "pyproject.toml" \
+              -not -path "*/.venv/*" \
+              -not -path "*/.git/*"
           )
 
           if [ "$found" -eq 0 ]; then
-            echo "No Python projects found!"
+            echo "No Python projects with pyproject.toml found!"
             exit 1
           fi
 
-      # Check all Python files recursively
-      - name: Validate Python syntax
+      # 5. Validate every Python file recursively
+      - name: Validate all Python files
+        shell: bash
         run: |
-          find GenAi -type f -name "*.py" \
+          find . -type f -name "*.py" \
             -not -path "*/.venv/*" \
+            -not -path "*/.git/*" \
             -not -path "*/__pycache__/*" \
             -print0 | xargs -0 -r python -m py_compile
 
-      # Final status
+      # 6. Pipeline success
       - name: Build completed
-        run: echo "All GenAI Python projects passed validation!"
+        run: echo "All Python projects passed dependency installation and syntax validation!"
